@@ -36,7 +36,7 @@ public class NewJFrame extends javax.swing.JFrame {
      */
     public NewJFrame() {
         initComponents();
-        jPanel2.setVisible(false);
+        parsePanel.setVisible(false);
         NoOfErrors.setVisible(false);
         errorNo.setVisible(false);
         showErrors.setVisible(false);
@@ -61,18 +61,20 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         quickParsing = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        quickPanel = new javax.swing.JPanel();
         NoOfErrors = new javax.swing.JLabel();
         errorNo = new javax.swing.JLabel();
         showErrors = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        parsePanel = new javax.swing.JPanel();
         startDate = new javax.swing.JLabel();
         endDate = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        startDateField = new javax.swing.JTextField();
+        endDateField = new javax.swing.JTextField();
         level = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         result = new javax.swing.JButton();
+        keyWordlabel = new javax.swing.JLabel();
+        keyWordField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -131,29 +133,29 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout quickPanelLayout = new javax.swing.GroupLayout(quickPanel);
+        quickPanel.setLayout(quickPanelLayout);
+        quickPanelLayout.setHorizontalGroup(
+            quickPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(quickPanelLayout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(quickPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(showErrors)
                     .addComponent(NoOfErrors))
                 .addGap(59, 59, 59)
                 .addComponent(errorNo)
                 .addContainerGap(90, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        quickPanelLayout.setVerticalGroup(
+            quickPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(quickPanelLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(quickPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NoOfErrors)
                     .addComponent(errorNo))
                 .addGap(42, 42, 42)
                 .addComponent(showErrors)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         startDate.setText("startDate");
@@ -171,42 +173,54 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        keyWordlabel.setText("Search For specifc Key Word");
+
+        javax.swing.GroupLayout parsePanelLayout = new javax.swing.GroupLayout(parsePanel);
+        parsePanel.setLayout(parsePanelLayout);
+        parsePanelLayout.setHorizontalGroup(
+            parsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(parsePanelLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(parsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(startDate)
                     .addComponent(endDate)
                     .addComponent(jLabel3))
                 .addGap(36, 36, 36)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(parsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(level, 0, 82, Short.MAX_VALUE)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(startDateField)
+                    .addComponent(endDateField))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(result)
                 .addGap(21, 21, 21))
+            .addGroup(parsePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(keyWordlabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(keyWordField)
+                .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        parsePanelLayout.setVerticalGroup(
+            parsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(parsePanelLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(parsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(startDate)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(startDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(parsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(endDate)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(endDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(result))
                 .addGap(24, 24, 24)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(level, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(parsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(level, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(parsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(keyWordlabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(keyWordField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -216,35 +230,35 @@ public class NewJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(80, 80, 80)
-                                .addComponent(jLabel2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(74, 74, 74)
-                                .addComponent(jLabel1)))
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(log4PropTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(logFileMessage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(log4jFileMessage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-                                .addComponent(logFileTextField, javax.swing.GroupLayout.Alignment.TRAILING)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(PropertyFileBrowse)
-                            .addComponent(logFileBrowse)))
+                        .addGap(80, 80, 80)
+                        .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(quickParsing)
-                        .addGap(44, 44, 44)
-                        .addComponent(logFileParserButton)))
+                        .addGap(74, 74, 74)
+                        .addComponent(jLabel1)))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(log4PropTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(logFileMessage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(log4jFileMessage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                        .addComponent(logFileTextField, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PropertyFileBrowse)
+                    .addComponent(logFileBrowse))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(quickPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(parsePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(quickParsing)
+                .addGap(103, 103, 103)
+                .addComponent(logFileParserButton)
+                .addGap(188, 188, 188))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,8 +283,8 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(quickParsing))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(parsePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(quickPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
@@ -369,8 +383,17 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_logFileBrowseActionPerformed
 
     private void logFileParserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logFileParserButtonActionPerformed
+        NoOfErrors.setVisible(false);
+        errorNo.setVisible(false);
+        showErrors.setVisible(false);
+        if(checkRequiredFields())
+            return;
+         System.out.println("conversionPattern :: "+conversionPattern);
+        System.out.println("logFileLocation :: "+logFileLocation);
+//        System.exit(1);
         returnedString = LogParserAdv1.beginOperation(System.currentTimeMillis(), conversionPattern ,logFileLocation);
-        jPanel2.setVisible(true);
+        
+        parsePanel.setVisible(true);
         System.out.println("conversionPattern :: "+conversionPattern);
         System.out.println("logFileLocation :: "+logFileLocation);
         
@@ -390,11 +413,11 @@ public class NewJFrame extends javax.swing.JFrame {
             System.out.println("endDate :: "+endDate);
         }
         
-        jTextField1.setText("");
-        jTextField2.setText("");
+        startDateField.setText("");
+        endDateField.setText("");
         
-        jTextField1.setText(begDate);
-        jTextField2.setText(endDate);
+        startDateField.setText(begDate);
+        endDateField.setText(endDate);
         
         if(Mainaray[1].contains("#")){
            levelArray= Mainaray[1].split("#");
@@ -407,24 +430,45 @@ level.setModel(new javax.swing.DefaultComboBoxModel(levelArray));
     }//GEN-LAST:event_logFileParserButtonActionPerformed
 
     private void resultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultActionPerformed
+//        parsePanel.setVisible(false);
         String levelS=(String) level.getSelectedItem();
+        String startDate=startDateField.getText();
+        String endDate=endDateField.getText();
         if(levelS.equalsIgnoreCase("select")){
-            System.out.println("please select level");
+            JOptionPane.showMessageDialog(null," please select level" );
             return ;
         }
-        String [] arg=new String[1];
+        if(startDate.length()<=0){
+            JOptionPane.showMessageDialog(null," please specify beg. date" );
+            return ;
+        }
+        if(endDate.length()<=0){
+            JOptionPane.showMessageDialog(null," please specify End date" );
+            return ;
+        }
+        String [] arg=new String[4];
+        System.out.println("array size :: "+arg.length);
         arg[0]=levelS;
+        arg[1]=startDate;
+        arg[2]=endDate;
+        arg[3]=keyWordField.getText();
+        for (String string : arg) {
+            System.out.println("aray data :: "+string);
+        }
         GridView.main(arg);
     }//GEN-LAST:event_resultActionPerformed
 
     private void quickParsingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quickParsingActionPerformed
-               System.out.println("log4PropTextField.getText() ::"+log4PropTextField.getText()+"--");
-               System.out.println("logFileTextField.getText() ::"+logFileTextField.getText()+"--");
-//               return;
-        if(log4PropTextField.getText().length()<=0 || logFileTextField.getText().length()<=0){
-                   JOptionPane.showMessageDialog(null," Please select log4j properties and log file" );
-                   return ;
-               } 
+//parsePanel.setVisible(false);
+
+
+quickPanel.setVisible(true);
+        NoOfErrors.setVisible(true);
+        errorNo.setVisible(true);
+        showErrors.setVisible(true);
+        
+        if(checkRequiredFields())
+            return;
         
                 String reqDateFormat = LogParserAdv1.getReqDateFormat(conversionPattern);
 //		System.out.println("table Creation Sql is >>" + tableCreationSql);
@@ -493,14 +537,13 @@ level.setModel(new javax.swing.DefaultComboBoxModel(levelArray));
     private javax.swing.JLabel NoOfErrors;
     private javax.swing.JButton PropertyFileBrowse;
     private javax.swing.JLabel endDate;
+    private javax.swing.JTextField endDateField;
     private javax.swing.JLabel errorNo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField keyWordField;
+    private javax.swing.JLabel keyWordlabel;
     private javax.swing.JComboBox level;
     private javax.swing.JTextField log4PropTextField;
     private javax.swing.JLabel log4jFileMessage;
@@ -508,10 +551,13 @@ level.setModel(new javax.swing.DefaultComboBoxModel(levelArray));
     private javax.swing.JLabel logFileMessage;
     private javax.swing.JButton logFileParserButton;
     private javax.swing.JTextField logFileTextField;
+    private javax.swing.JPanel parsePanel;
+    private javax.swing.JPanel quickPanel;
     private javax.swing.JButton quickParsing;
     private javax.swing.JButton result;
     private javax.swing.JButton showErrors;
     private javax.swing.JLabel startDate;
+    private javax.swing.JTextField startDateField;
     // End of variables declaration//GEN-END:variables
 
     private boolean checkPropertyFile(File propertieFile) {
@@ -590,5 +636,16 @@ level.setModel(new javax.swing.DefaultComboBoxModel(levelArray));
             e.printStackTrace();
         }
         return properFileFlag;
+    }
+
+    private boolean checkRequiredFields() {
+  System.out.println("log4PropTextField.getText() ::"+log4PropTextField.getText()+"--");
+               System.out.println("logFileTextField.getText() ::"+logFileTextField.getText()+"--");
+//               return;
+        if(log4PropTextField.getText().length()<=0 || logFileTextField.getText().length()<=0){
+                   JOptionPane.showMessageDialog(null," Please select log4j properties and log file" );
+                   return true;
+               }
+        return false;
     }
 }

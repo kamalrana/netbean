@@ -33,7 +33,7 @@ public static void main(String[] args) throws Exception {}
 		Scanner s = null;
                 String begDate ="";
                 String lastDate ="";
-		String dbName ="C:\\sqlite\\testDB.db";
+		String dbName ="D:\\sqlite\\testDB1.db";
 		boolean b = true;
 		String object = "";
 		String date = "";
@@ -42,7 +42,7 @@ public static void main(String[] args) throws Exception {}
 
 		try {
                     if(! new File(dbName).exists()){
-                        String str ="c:/sqlite/sqlite3.exe testDB.db";
+                        String str ="D:/sqlite/sqlite3.exe testDB1.db";
 	    Process process = Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c",str});
 	    System.out.println(str);
                     }

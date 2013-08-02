@@ -22,8 +22,13 @@ import javax.swing.text.*;
 import javax.swing.event.*;
 import javax.swing.table.*;
 import javax.swing.plaf.basic.*;
+import static log4j.GridView.keyWordToSearch;
+
 
 public class GridView extends JPanel {
+    static String startDate;
+    static String endDate;
+    static String keyWordToSearch;
         RadioButtonUI ui = new RadioButtonUI();
         int pageSize = 5;
         private static JSplitPane splitPane;
@@ -55,7 +60,7 @@ public class GridView extends JPanel {
                 table.setIntercellSpacing(new Dimension());
                 table.setShowGrid(false);
                 table.setRowSorter(sorter);
-//                table.getColumn("Date").setPreferredWidth(100);
+//             table.getColumn("Date").setPreferredWidth(100);
               table.getColumn("Date").setPreferredWidth(200);
               table.getColumn("Message").setPreferredWidth(1000);
                 showPages(50, 1);
@@ -164,14 +169,22 @@ public class GridView extends JPanel {
 
         public static void main(String[] args) {
             if(args.length<=0)
-                level="DEBUG";
+                level="ERROR";
             else
+//            {}
             level=args[0];
+            startDate = args[1];
+            endDate = args[2];
+            keyWordToSearch=args[3];
+            System.out.println("level is :: "+level);
+            System.out.println("start date :: "+startDate);
+            System.out.println("end date :: "+endDate);
                 JFrame frame = new JFrame("Table");
                 infoPanel = new JPanel(new FlowLayout(5));
                 info.setEditable(false);
-//                infoPanel.setPreferredSize(new Dimension(50, 50));
-//                info.setLineWrap(true);
+                infoPanel.setPreferredSize(new Dimension(1200, 50));
+                info.setLineWrap(true);
+                info.setPreferredSize(new Dimension(1200, 50));
                 infoPanel.add(info);
                 splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, new GridView(), infoPanel);
 //                splitPane.setPreferredSize(new Dimension(1000,240));
@@ -189,7 +202,6 @@ public class GridView extends JPanel {
         }
         
 }
-
 class RadioButtonUI extends BasicRadioButtonUI {
         public Icon getDefaultIcon() {
                 return null;
@@ -254,9 +266,16 @@ class Model extends DefaultTableModel {
 //                table.addColumn(new TableColumn(1,1,TableCellRenderer.this,TableCellEditor.));
                 try {
                 	Class.forName("org.sqlite.JDBC");
-                    String url = "jdbc:sqlite:C:/sqlite/testDB.db";
+                    String url = "jdbc:sqlite:D:/sqlite/testDB1.db";
                         Connection con = DriverManager.getConnection(url,"","");
-                        String query = "select * from Test1 where level='"+GridView.level+"'";
+                        String query = "select * from Test1 ";
+                        if(! (GridView.level.toLowerCase().equals("select")) )
+                            query+="where level='"+GridView.level+"'";
+                        if((GridView.startDate!=null && GridView.endDate!=null) && ( GridView.startDate.length()>0 && GridView.endDate.length()>0 ))
+                            query+="and date between '"+GridView.startDate+"' and '"+GridView.endDate+"'";
+                        if( (GridView.keyWordToSearch!=null) && (GridView.keyWordToSearch.length()>0))
+                            query+="and message like '%"+GridView.keyWordToSearch+"%'";
+                        System.out.println("query :: "+query);
                         Statement st = con.createStatement();
                         ResultSet rs = st.executeQuery(query);
                         int i=0;

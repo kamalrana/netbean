@@ -33,7 +33,7 @@ public static void main(String[] args) throws Exception {}
 		Scanner s = null;
                 String begDate ="";
                 String lastDate ="";
-		String dbName ="D:\\sqlite\\testDB1.db";
+		String dbName =Log4jFrame.databaseFile;
 		boolean b = true;
 		String object = "";
 		String date = "";
@@ -42,7 +42,11 @@ public static void main(String[] args) throws Exception {}
 
 		try {
                     if(! new File(dbName).exists()){
-                        String str ="D:/sqlite/sqlite3.exe testDB1.db";
+//                        String str ="D:/sqlite/sqlite3.exe testDB1.db";
+                        System.out.println("dbName :: "+dbName);
+                        String str=dbName.substring(0,dbName.lastIndexOf("/")+1);
+                        str+="sqlite3.exe "+dbName.substring(dbName.lastIndexOf("/")+1,dbName.length());
+                        System.out.println("str is :: "+str);
 	    Process process = Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c",str});
 	    System.out.println(str);
                     }
@@ -75,7 +79,7 @@ public static void main(String[] args) throws Exception {}
 			
 			while (s.hasNextLine()) {
 				object = s.nextLine().trim();
-
+                            System.out.println("object is :: "+object);
 				if (object.contains("DEBUG")) {
 					level = "DEBUG";
                                         debugFlag = true;
@@ -102,7 +106,7 @@ public static void main(String[] args) throws Exception {}
 				date = "";
 				// System.out.println("datePattern is " + m.pattern());
 				while (m.find()) {
-					// System.out.println(m.start() + ">>" + m.group());
+					 System.out.println(m.start() + ">>" + m.group());
 					date = m.group();
 					break;
 				}
@@ -144,6 +148,8 @@ public static void main(String[] args) throws Exception {}
 		try {
 			stmt.executeUpdate("END TRANSACTION");
                         ResultSet rs=stmt.executeQuery("select date from Test1 limit 1");
+                        if(rs==null)
+                            System.out.println("rs is null");
                         rs.next();
                         begDate=rs.getString(1);
                         System.out.println("beg. date is "+begDate);
@@ -151,15 +157,14 @@ public static void main(String[] args) throws Exception {}
                        rs=stmt.executeQuery("select date from Test1 limit (select count(date) from Test1)-1,1");
                         rs.next();
                      lastDate = rs.getString(1);
-                        System.out.println("beg. date is "+lastDate);
+                        System.out.println("end. date is "+lastDate);
 			stmt.close();
 			c.close();
 			ps.close();
                         rs.close();
 			s.close();
-                        
-                       
-		} catch (SQLException e) {
+		} catch (Exception e) {
+                    System.out.println("Exception catch ");
 			e.printStackTrace();
 		}
                 String returnString=begDate+"#"+lastDate+"##";

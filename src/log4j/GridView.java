@@ -266,7 +266,7 @@ class Model extends DefaultTableModel {
 //                table.addColumn(new TableColumn(1,1,TableCellRenderer.this,TableCellEditor.));
                 try {
                 	Class.forName("org.sqlite.JDBC");
-                    String url = "jdbc:sqlite:D:/sqlite/testDB1.db";
+                    String url = "jdbc:sqlite:"+Log4jFrame.databaseFile;
                         Connection con = DriverManager.getConnection(url,"","");
                         String query = "select * from Test1 ";
                         if(! (GridView.level.toLowerCase().equals("select")) )

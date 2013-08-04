@@ -76,6 +76,21 @@ public class GridView extends JPanel {
 //                table.setRowHeight(20);
                 add(new JScrollPane(table));
                 add(box, BorderLayout.SOUTH);
+//                JPanel jp=new JPanel(new BorderLayout());
+                SearchPanel jp=new SearchPanel();
+//                Component[] cmpAray = jp.getComponents();
+//                
+//                JScrollPane jsp = (JScrollPane) jp.getComponent(7);
+//                jsp.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+//                System.out.println(jsp.getViewport());
+//                jtx.setLineWrap(true);
+//                jtx.setWrapStyleWord(true);
+//                System.out.println("9"+jp.getComponent(9));                
+//                for (int i=1;i<9;i++) {
+//                    System.out.println(i+"-"+jsp.getComponent(i));
+//            }
+//                jp.setPreferredSize(new Dimension(200, 50));
+                add(jp,BorderLayout.EAST);
                 setPreferredSize(new Dimension(1200, 600));
         }
 
@@ -171,11 +186,12 @@ public class GridView extends JPanel {
             if(args.length<=0)
                 level="ERROR";
             else
-//            {}
+            {
             level=args[0];
             startDate = args[1];
             endDate = args[2];
             keyWordToSearch=args[3];
+            }
             System.out.println("level is :: "+level);
             System.out.println("start date :: "+startDate);
             System.out.println("end date :: "+endDate);

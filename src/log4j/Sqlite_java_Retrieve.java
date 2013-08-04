@@ -3,7 +3,7 @@
 */
 
 
-package log4j_fetch;
+package log4j;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

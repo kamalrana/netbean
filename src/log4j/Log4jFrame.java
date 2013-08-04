@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Properties;
 import java.util.Set;
-import javax.swing.JFileChooser;
+import javax.swing.JFileChooser;    
 import javax.swing.JOptionPane;
 import static log4j.LogParserAdv1.reqDateFormat;
 
@@ -23,18 +23,19 @@ import static log4j.LogParserAdv1.reqDateFormat;
  *
  * @author kamal64
  */
-public class NewJFrame extends javax.swing.JFrame {
+public class Log4jFrame extends javax.swing.JFrame {
     private static Set propKeySet;
 
     private JFileChooser fc;
     private String logFileLocation;
     private String conversionPattern;
     private String returnedString;
+    public static String databaseFile = "c:/sqlite/testDB.db";
 
     /**
-     * Creates new form NewJFrame
+     * Creates new form Log4jFrame
      */
-    public NewJFrame() {
+    public Log4jFrame() {
         initComponents();
         parsePanel.setVisible(false);
         NoOfErrors.setVisible(false);
@@ -51,6 +52,7 @@ public class NewJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        result = new javax.swing.JButton();
         log4PropTextField = new javax.swing.JTextField();
         PropertyFileBrowse = new javax.swing.JButton();
         logFileTextField = new javax.swing.JTextField();
@@ -71,10 +73,16 @@ public class NewJFrame extends javax.swing.JFrame {
         startDateField = new javax.swing.JTextField();
         endDateField = new javax.swing.JTextField();
         level = new javax.swing.JComboBox();
-        jLabel3 = new javax.swing.JLabel();
-        result = new javax.swing.JButton();
+        levelLabel = new javax.swing.JLabel();
         keyWordlabel = new javax.swing.JLabel();
         keyWordField = new javax.swing.JTextField();
+
+        result.setText("Result");
+        result.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resultActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,7 +107,6 @@ public class NewJFrame extends javax.swing.JFrame {
         });
 
         log4jFileMessage.setBackground(new java.awt.Color(255, 255, 255));
-        log4jFileMessage.setText("log4jFileMessage");
 
         logFileParserButton.setText("Parse File");
         logFileParserButton.addActionListener(new java.awt.event.ActionListener() {
@@ -107,8 +114,6 @@ public class NewJFrame extends javax.swing.JFrame {
                 logFileParserButtonActionPerformed(evt);
             }
         });
-
-        logFileMessage.setText("logFileMessage");
 
         jLabel1.setText("Log4j File");
 
@@ -164,14 +169,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         level.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECT", "DEBUG", "ERROR", "WARN" }));
 
-        jLabel3.setText("Level");
-
-        result.setText("Result");
-        result.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resultActionPerformed(evt);
-            }
-        });
+        levelLabel.setText("Level");
 
         keyWordlabel.setText("Search For specifc Key Word");
 
@@ -180,24 +178,24 @@ public class NewJFrame extends javax.swing.JFrame {
         parsePanelLayout.setHorizontalGroup(
             parsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(parsePanelLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
                 .addGroup(parsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(startDate)
-                    .addComponent(endDate)
-                    .addComponent(jLabel3))
-                .addGap(36, 36, 36)
-                .addGroup(parsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(level, 0, 82, Short.MAX_VALUE)
-                    .addComponent(startDateField)
-                    .addComponent(endDateField))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addComponent(result)
-                .addGap(21, 21, 21))
-            .addGroup(parsePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(keyWordlabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(keyWordField)
+                    .addGroup(parsePanelLayout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(parsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(startDate)
+                            .addComponent(endDate)
+                            .addComponent(levelLabel))
+                        .addGap(36, 36, 36)
+                        .addGroup(parsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(level, 0, 82, Short.MAX_VALUE)
+                            .addComponent(startDateField)
+                            .addComponent(endDateField))
+                        .addGap(0, 97, Short.MAX_VALUE))
+                    .addGroup(parsePanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(keyWordlabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(keyWordField)))
                 .addContainerGap())
         );
         parsePanelLayout.setVerticalGroup(
@@ -207,14 +205,13 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGroup(parsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(startDate)
                     .addComponent(startDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                .addGap(22, 22, 22)
                 .addGroup(parsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(endDate)
-                    .addComponent(endDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(result))
-                .addGap(24, 24, 24)
+                    .addComponent(endDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addGroup(parsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(levelLabel)
                     .addComponent(level, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(parsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,11 +234,12 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addComponent(jLabel1)))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(log4PropTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(logFileMessage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(log4jFileMessage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-                        .addComponent(logFileTextField, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addComponent(logFileMessage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                        .addComponent(logFileTextField, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(log4jFileMessage, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(log4PropTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PropertyFileBrowse)
@@ -294,6 +292,7 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_logFileTextFieldActionPerformed
 
+    // log4j property file browse button action. We will not use this Final Release
     private void PropertyFileBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PropertyFileBrowseActionPerformed
         log4jFileMessage.setText("");
         if (fc == null) {
@@ -335,6 +334,7 @@ public class NewJFrame extends javax.swing.JFrame {
         fc.setSelectedFile(null);
     }//GEN-LAST:event_PropertyFileBrowseActionPerformed
 
+    // log4j log file browse button action. We will not use this Final Release
     private void logFileBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logFileBrowseActionPerformed
 
         if (fc == null) {
@@ -516,20 +516,20 @@ quickPanel.setVisible(true);
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Log4jFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Log4jFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Log4jFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Log4jFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrame().setVisible(true);
+                new Log4jFrame().setVisible(true);
             }
         });
     }
@@ -541,10 +541,10 @@ quickPanel.setVisible(true);
     private javax.swing.JLabel errorNo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField keyWordField;
     private javax.swing.JLabel keyWordlabel;
     private javax.swing.JComboBox level;
+    private javax.swing.JLabel levelLabel;
     private javax.swing.JTextField log4PropTextField;
     private javax.swing.JLabel log4jFileMessage;
     private javax.swing.JButton logFileBrowse;
@@ -571,7 +571,7 @@ quickPanel.setVisible(true);
             props.load(fis);
 
             // getting key set from file, saving key set for later iteration
-            NewJFrame.propKeySet = props.keySet();
+            Log4jFrame.propKeySet = props.keySet();
 
             // if file don't begin with log4j standard key format return false
             if(! ( propKeySet.toArray()[0].toString().toLowerCase().contains("log4j") ) ){
@@ -613,7 +613,7 @@ quickPanel.setVisible(true);
             }
             
             // second iteration to get conversion pattern
-            for (Iterator iterator2 = NewJFrame.propKeySet.iterator(); iterator2.hasNext();) {
+            for (Iterator iterator2 = Log4jFrame.propKeySet.iterator(); iterator2.hasNext();) {
 
                 String key = (String) iterator2.next();
 

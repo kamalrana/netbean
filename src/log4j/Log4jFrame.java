@@ -29,7 +29,6 @@ public class Log4jFrame extends javax.swing.JFrame {
     private JFileChooser fc;
     private String logFileLocation;
     private String conversionPattern;
-    private String returnedString;
     public static String databaseFile = "c:/sqlite/testDB.db";
 
     /**
@@ -391,11 +390,9 @@ public class Log4jFrame extends javax.swing.JFrame {
          System.out.println("conversionPattern :: "+conversionPattern);
         System.out.println("logFileLocation :: "+logFileLocation);
 //        System.exit(1);
-        returnedString = LogParserAdv1.beginOperation(System.currentTimeMillis(), conversionPattern ,logFileLocation);
+ String returnedString = LogParserAdv1.beginOperation(System.currentTimeMillis(), conversionPattern ,logFileLocation);
         
         parsePanel.setVisible(true);
-        System.out.println("conversionPattern :: "+conversionPattern);
-        System.out.println("logFileLocation :: "+logFileLocation);
         
         String Mainaray[] =returnedString.split("##");
         if(Mainaray.length<=1){

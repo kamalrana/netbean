@@ -29,7 +29,7 @@ public class Log4jFrame extends javax.swing.JFrame {
     private JFileChooser fc;
     private String logFileLocation;
     private String conversionPattern;
-    public static String databaseFile = "c:/sqlite/testDB.db";
+    public static String databaseFile = "D:/sqlite/testDB.db";
 
     /**
      * Creates new form Log4jFrame
